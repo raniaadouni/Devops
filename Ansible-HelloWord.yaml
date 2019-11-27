@@ -1,0 +1,26 @@
+---
+- hosts: vps,home
+  user: ansible
+  sudo: yes
+  tasks:
+    - name: get latest packages
+      action: apt update_cache=yes
+    - name: install latest packages
+      action: apt upgrade=safe
+
+
+
+      ********************
+      cat some.yml
+- hosts:
+    - tag_Silo_dev
+  tasks:
+    - name: print something
+      debug: msg="hello world"
+
+- hosts:
+    - tag_Environment_dev:&tag_node_type_bastion
+  tasks:
+    - name: print something
+      debug: msg="hello world"
+ansible-playbook some.yml | grep msg | wc -l

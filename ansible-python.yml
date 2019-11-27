@@ -1,0 +1,7 @@
+- name: Setup ansible needed things.
+  hosts: all
+  gather_facts: no
+  tasks:
+     - name: "Install Python 2 needed for running Ansible."
+       raw: sudo apt-get -y install python-simplejson
+

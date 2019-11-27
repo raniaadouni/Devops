@@ -1,0 +1,16 @@
+- name: Deploy on OpenStack
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Deploy an instance
+      os_server:
+        state: present
+        name: nginx
+        image: d87b0dd3-838e-4853-80af-c9ac46ea5a39
+        key_name: cloudkey
+        wait: yes
+        flavor: m1.small
+        auto_floating_ip: yes
+        network: tenantNet
+        meta:
+          hostname: nginx.localdomain
